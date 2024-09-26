@@ -6,33 +6,28 @@
  */
 
  // Asignación de variables
-$mes = 8;
-$ano = 2024;
+$month = 9;
+$year = 2024;
+$nDays = 31;
 
- // Ajuste del switch
-switch ($mes){
-    case 1:
-    case 3:
-    case 5:
-    case 7:
-    case 8:
-    case 10:
-    case 12:
-        echo "El mes $mes tiene 31 días";
+// Comprobar
+switch ($month){
+    case 2:
+        $nDays = 28;
+        if ($year % 4 == 0 and $year % 100 != 0 or $year % 400 == 0) {
+            $nDays++;
+        }
         break;
     case 4:
     case 6:
     case 9:
     case 11:
-        echo "El mes $mes tiene 30 días";
+        $nDays = 30;
         break;
-    case 2:
-        // Comprobar si el año es bisiesto o no
-        if ($ano%4==0 and ($ano%100!=0 or $ano%400==0)){
-            echo "Febrero en $ano tiene 28 días segun el año";
-        } else {
-            echo "Febrero en $ano tiene 28 días segun el año";
-        }
-    default: 
-        echo "¿Qué mes es ese?";
-    }
+    case ($month == 2 and $leap == FALSE):
+        $nDays = 28;
+        break;
+}
+// VISTA
+
+echo "El mes " . $month . " del año " . $year . " tiene " . $nDays . " dias";
